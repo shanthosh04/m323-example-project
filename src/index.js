@@ -1,4 +1,5 @@
 import hh from "hyperscript-helpers";
+import { add } from "ramda";
 import { h, diff, patch } from "virtual-dom";
 import createElement from "virtual-dom/create-element";
 
@@ -45,6 +46,7 @@ function view(dispatch, model) {
 function update(msg, model) {
   switch (msg.type) {
     case MSGS.SAVE:
+      const model = add(msg, model);
       return {...model, savedText: "",};
     case MSGS.DELETE:
       return {...model, savedText: "",};
@@ -62,7 +64,6 @@ function app(initModel, update, view, node) {
   let currentView = view(dispatch, model);
   let rootNode = createElement(currentView);
   node.appendChild(rootNode);
-
   function dispatch(msg) {
     model = update(msg, model);
     const updatedView = view(dispatch, model);
@@ -73,6 +74,7 @@ function app(initModel, update, view, node) {
 }
 
 const initModel = {
+  Ti
 };
 
 const rootNode = document.getElementById("app");
