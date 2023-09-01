@@ -74,7 +74,14 @@ function app(initModel, update, view, node) {
 }
 
 const initModel = {
-  Ti
+  newMenu: {
+    foodName: '',
+    calories: '',
+  },
+  meals: [{
+    foodName: '',
+    calories: 0
+  }]
 };
 
 const rootNode = document.getElementById("app");
